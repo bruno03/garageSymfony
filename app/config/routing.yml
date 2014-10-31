@@ -1,0 +1,4 @@
+gp_platform:
+    resource: "@GPPlatformBundle/Resources/config/routing.yml"
+    prefix:   /platform
+
