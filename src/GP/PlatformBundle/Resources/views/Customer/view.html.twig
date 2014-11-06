@@ -1,0 +1,30 @@
+{# src/GP/PlatformBundle/Resources/views/Customer/index.html.twig #}
+
+{% extends "GPPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Client - {{ parent() }}
+{% endblock %}
+
+{% block gpplatform_body %}
+
+  <h2>Détail du client : </h2>
+  
+  <p>ID Client : {{ customer.id }}</p>
+  <p>Titre : {{ customer.title.name }}</p>
+  <p>Nom : {{ customer.lastname }}</p>
+  <p>Prénom : {{ customer.firstname }}</p>
+  <p>Adresse : {{ customer.address }}</p>
+  <p>{{ customer.cp }} {{ customer.city }}</p>
+  <p>Téléphone 1 : {{ customer.tel1 }}</p>
+  <p>Téléphone 2 : {{ customer.tel2 }}</p>
+  
+
+  
+  <a class="btn btn-primary" href="{{ path('gp_platform_edit', { 'id': customer.id }) }}">Modifier</a>
+  
+  <a class="btn btn-danger" href="{{ path('gp_platform_delete', { 'id': customer.id }) }}">Supprimer</a>
+
+ 
+
+{% endblock %}

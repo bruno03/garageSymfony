@@ -1,0 +1,16 @@
+{# src/GP/PlatformBundle/Resources/views/Customer/edit.html.twig #}
+
+{% extends "GPPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block gpplatform_body %}
+
+  <h2>Modifier le client : </h2>
+  
+  {{ include("GPPlatformBundle:Customer:form.html.twig") }}
+
+
+{% endblock %}

@@ -10,53 +10,50 @@
 
   {% block stylesheets %}
     {# On charge le CSS de bootstrap depuis le site directement #}
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-responsive.css">
+    
   {% endblock %}
 </head>
 
 <body>
   <div class="container">
-    <div id="header" class="jumbotron">
-      <h1>Ma plateforme CLIENT</h1>
-      <p>
-        Ce projet est propulsé par Symfony2,
-        et construit grâce au MOOC OpenClassrooms et SensioLabs.
-      </p>
-      <p>
-        <a class="btn btn-primary btn-lg" href="http://fr.openclassrooms.com/informatique/cours/developpez-votre-site-web-avec-le-framework-symfony2">
-          Participer au MOOC »
-        </a>
-      </p>
-    </div>
+   		<header class="jumbotron">
+    		<h1>Ma plateforme CLIENT</h1>
+    		<p>Ce projet est propulsé par Symfony2,et construit grâce au MOOC OpenClassrooms et SensioLabs.</p>
+      		<p><a class="btn btn-primary btn-lg" href="">Participer au MOOC »</a></p>
+    	</header>
 
-    <div class="row">
-      <div id="menu" class="col-md-3">
-        <h3>Menu</h3>
-        <ul class="nav nav-pills nav-stacked">
-          <li><a href="{{ path('gp_platform_home') }}">Accueil</a></li>
-          <li><a href="{{ path('gp_platform_add') }}">Ajouter un client</a></li>
-          <li><a href="{{ path('gp_platform_search') }}">Tous mes clients</a></li>
-        </ul>
-
-       
-    </div>
-    
-    {% block body %}
-  	{% endblock %}
-
-    <hr>
+    	<div class="row">
+      		<nav class="col-sm-3">
+        		<h3>Menu</h3>
+        			<ul class="nav nav-pills nav-stacked">
+          				<li><a href="{{ path('gp_platform_home') }}">Accueil</a></li>
+          				<li><a href="{{ path('gp_platform_add') }}">Ajouter un client</a></li>
+          				<li><a href="{{ path('gp_platform_search') }}">Tous mes clients</a></li>
+        			</ul>
+       		</nav>
+     
+     		<section class="col-sm-9">
+		    	{% block body %}
+		  		{% endblock %}
+		  	</section>
+  		
+	
+    	<hr>
 
    
+   		<footer>
+      		<p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+   		</footer>
+   
+   </div>
   </div>
   
-   <footer>
-      <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
-   </footer>
-
   {% block javascripts %}
     {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.js"></script>
   {% endblock %}
 
 </body>

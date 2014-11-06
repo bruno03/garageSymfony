@@ -1,0 +1,28 @@
+{# src/GP/PlatformBundle/Resources/views/Customer/index.html.twig #}
+
+{% extends "GPPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Search - {{ parent() }}
+{% endblock %}
+
+{% block gpplatform_body %}
+
+  <h2>Liste des clients : </h2>
+  
+  <table>
+  {% for customer in customers %}
+  <tr>
+    <td><a href="{{ path('gp_platform_view', { 'id': customer.id }) }}">{{ customer.id }}</a></td>
+    <td>{{ customer.firstname }}</td>
+    <td>{{ customer.lastname }}</td>
+  </tr>
+  {% else %}
+    <p>Pas d'utilisateur trouvé.</p>
+  {% endfor %}
+</table>
+  
+
+ 
+
+{% endblock %}

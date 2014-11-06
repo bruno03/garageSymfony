@@ -1,0 +1,31 @@
+gp_platform_home:
+    path:      /{page}
+    defaults:  { _controller: GPPlatformBundle:Customer:index, page: 1 }
+    requirements:
+        page: \d*
+
+gp_platform_view:
+    path:      /customer/{id}
+    defaults:  { _controller: GPPlatformBundle:Customer:view }
+    requirements:
+        id: \d+
+
+gp_platform_add:
+    path:      /add
+    defaults:  { _controller: GPPlatformBundle:Customer:add }
+
+gp_platform_edit:
+    path:      /edit/{id}
+    defaults:  { _controller: GPPlatformBundle:Customer:edit }
+    requirements:
+        id: \d+
+
+gp_platform_delete:
+    path:      /delete/{id}
+    defaults:  { _controller: GPPlatformBundle:Customer:delete }
+    requirements:
+        id: \d+
+
+gp_platform_search:
+    path:      /search
+    defaults:  { _controller: GPPlatformBundle:Customer:search }

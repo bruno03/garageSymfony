@@ -1,0 +1,30 @@
+{# src/GP/PlatformBundle/Resources/views/Customer/delete.html.twig #}
+
+{% extends "GPPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Client - {{ parent() }}
+{% endblock %}
+
+{% block gpplatform_body %}
+
+
+<h2>Supprimer un client : </h2>
+
+  <p>
+    Etes-vous certain de vouloir supprimer le client "{{ customer.lastname }}" ?
+  </p>
+
+  {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+  <form action="{{ path('gp_platform_delete', {'id': customer.id}) }}" method="post">
+    <a href="{{ path('gp_platform_view', {'id': customer.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour au client
+    </a>
+    {# Ici j'ai écrit le bouton de soumission à la main #}
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+    {# Ceci va générer le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+  
+{% endblock %}
