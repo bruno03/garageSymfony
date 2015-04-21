@@ -26,11 +26,6 @@ class Customer
      * @ORM\JoinColumn(nullable=false)
      */
     private $title; 
-    
-    /**
-     * @ORM\OneToOne(targetEntity="GP\PlatformBundle\Entity\Image", cascade={"persist"})
-     */
-    private $image; 
 
     /**
      * @var string
@@ -276,26 +271,4 @@ class Customer
         return $this->title;
     }
 
-    /**
-     * Set image
-     *
-     * @param \GP\PlatformBundle\Entity\Image $image
-     * @return Customer
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \GP\PlatformBundle\Entity\Image 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
 }
