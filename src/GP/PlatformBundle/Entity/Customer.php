@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="GP\PlatformBundle\Entity\CustomerRepository")
+
  */
 class Customer
 {
@@ -26,6 +27,12 @@ class Customer
      * @ORM\JoinColumn(nullable=false)
      */
     private $title; 
+	
+	/**
+     * @ORM\OneToOne(targetEntity="GP\PlatformBundle\Entity\Image")
+     * @ORM\JoinColumn(nullable=true)
+     */
+	private $image; 
 
     /**
      * @var string
@@ -270,5 +277,30 @@ class Customer
     {
         return $this->title;
     }
+	
+	 /**
+     * Set image
+     *
+     * @param \GP\PlatformBundle\Entity\Image $image
+     * @return Customer
+     */
+    public function setImage(\GP\PlatformBundle\Entity\Image $image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \GP\PlatformBundle\Entity\Image 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+	
+	
 
 }

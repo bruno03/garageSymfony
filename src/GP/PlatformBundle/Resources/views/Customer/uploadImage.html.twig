@@ -1,0 +1,38 @@
+{# src/GP/PlatformBundle/Resources/views/Customer/upload.html.twig #}
+
+{% extends "GPPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Client - {{ parent() }}
+{% endblock %}
+
+{% block gpplatform_body %}
+
+  <h2>Upload une image </h2>
+  
+  <div class="well">
+	<form class="form-horizontal" action="{{ path('gp_platform_uploadImage', { 'id': customer.id }) }}" method="post" {{ form_enctype(form) }}>
+	
+	<div class="form-group">
+      {{ form_label(form.file, "Uploader une image", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.file) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.file) }}
+      </div>
+    </div>
+
+  {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+  {{ form_widget(form.Enregistrer, {'attr': {'class': 'btn btn-primary'}}) }}
+
+  {# Génération automatique des champs pas encore écrits.
+     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+     et tous les champs cachés (type « hidden »). #}
+  {{ form_rest(form) }}
+  
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+</div>
+  
+ 
+
+{% endblock %}

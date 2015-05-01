@@ -3,9 +3,12 @@
 namespace GP\PlatformBundle\Controller;
 
 use GP\PlatformBundle\Entity\Customer;
+use GP\PlatformBundle\Entity\Image;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use GP\PlatformBundle\Form\CustomerType;
+use GP\PlatformBundle\Form\ImageType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 
 class CustomerController extends Controller
@@ -24,10 +27,10 @@ class CustomerController extends Controller
         ->getManager()
         ->find('GPPlatformBundle:Customer', $id);
         
-         // Le render ne change pas, on passait avant un tableau, maintenant un objet
-    return $this->render('GPPlatformBundle:Customer:view.html.twig', array(
-      'customer' => $customer
-    ));
+   
+    	return $this->render('GPPlatformBundle:Customer:view.html.twig', array(
+      	'customer' => $customer
+    	));
     }
     
     //Metod to add a new Customer
@@ -126,9 +129,53 @@ class CustomerController extends Controller
         $customers = $repository->findAll();
         
         
-    return $this->render('GPPlatformBundle:Customer:search.html.twig', array(
-      'customers' => $customers
-    ));
+    	return $this->render('GPPlatformBundle:Customer:search.html.twig', array(
+      			'customers' => $customers
+    	));
+    
+    }
+	
+	/**
+ 	* @Template()
+ 	*/
+	public function uploadImageAction($id, Request $request)
+    {
+    	$customer = $this->getDoctrine()
+        ->getManager()
+        ->find('GPPlatformBundle:Customer', $id);
+    	
+    	
+		
+		if($customer->getImage()== null){
+			$image= new Image(); 
+		}
+		else {
+			$image = $customer->getImage(); 
+		}
+		// Et on construit le formBuilder avec cette instance d'annonce
+        $form = $this->get('form.factory')->create(new ImageType(), $image);   
+	
+	    $form->handleRequest($request);
+	
+	    if ($form->isValid()) {
+	        $em = $this->getDoctrine()->getManager();
+			
+			//$image->upload();
+	
+	        $em->persist($image);
+			$customer->setImage($image);
+			$em->persist($customer);
+	        $em->flush();
+	
+	        return $this->render('GPPlatformBundle:Customer:view.html.twig', array(
+      		'customer' => $customer
+    		));
+	    }
+    
+    // return $this->render('GPPlatformBundle:Customer:upload.html.twig', array(
+      // 'form' => $form
+    // ));
+    return array('form' => $form->createView(), 'customer' => $customer);
     
     }
 }

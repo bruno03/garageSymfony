@@ -29,3 +29,7 @@ gp_platform_delete:
 gp_platform_search:
     path:      /search
     defaults:  { _controller: GPPlatformBundle:Customer:search }
+
+gp_platform_uploadImage:
+    path:      /uploadImage/{id}
+    defaults:  { _controller: GPPlatformBundle:Customer:uploadImage }

@@ -1,4 +1,4 @@
-{# src/GP/PlatformBundle/Resources/views/Customer/index.html.twig #}
+{# src/GP/PlatformBundle/Resources/views/Customer/view.html.twig #}
 
 {% extends "GPPlatformBundle::layout.html.twig" %}
 
@@ -19,9 +19,18 @@
   <p>Téléphone 1 : {{ customer.tel1 }}</p>
   <p>Téléphone 2 : {{ customer.tel2 }}</p>
   
-
+  
+  {% if customer.image == null %}
+     <p align="center" valign="top"><img src="{{ asset('uploads/profil-HOM.png')}}" alt="" width="25%" /></p>
+  {% else %}
+  	<p align="center" valign="top"><img src="{{ asset('uploads/documents/' ~ customer.image.path) }}" alt=""  width="25%" /></p>
+  	<p> {{ customer.image.getAbsolutePath }}</p>
+{% endif %}
+  
   
   <a class="btn btn-primary" href="{{ path('gp_platform_edit', { 'id': customer.id }) }}">Modifier</a>
+  
+  <a class="btn btn-primary" href="{{ path('gp_platform_uploadImage', { 'id': customer.id }) }}">Modifier l'image</a>
   
   <a class="btn btn-danger" href="{{ path('gp_platform_delete', { 'id': customer.id }) }}">Supprimer</a>
 
