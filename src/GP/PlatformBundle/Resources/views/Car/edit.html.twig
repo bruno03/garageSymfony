@@ -1,0 +1,16 @@
+{# src/GP/PlatformBundle/Resources/views/Car/edit.html.twig #}
+
+{% extends "GPPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block gpplatform_body %}
+
+  <h2>Modifier la  voiture : </h2>
+
+  {{ include("GPPlatformBundle:Car:form.html.twig") }}
+
+ 
+{% endblock %}

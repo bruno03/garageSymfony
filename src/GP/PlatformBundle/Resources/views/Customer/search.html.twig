@@ -10,17 +10,32 @@
 
   <h2>Liste des clients : </h2>
   
-  <table>
-  {% for customer in customers %}
-  <tr>
-    <td><a href="{{ path('gp_platform_view', { 'id': customer.id }) }}">{{ customer.id }}</a></td>
-    <td>{{ customer.firstname }}</td>
-    <td>{{ customer.lastname }}</td>
-  </tr>
-  {% else %}
-    <p>Pas d'utilisateur trouvé.</p>
-  {% endfor %}
-</table>
+	{% if customers != null %}
+	<table class="table table-striped">
+  		<tr>
+  			<th>#</th>
+  			<th>Nom</th>
+  			<th>Prénom</th>
+  			<th>Adresse</th>
+  			<th>Code postal</th>
+  			<th>Ville</th>
+  		</tr>
+  		
+  		{% for customer in customers %}
+  		<tr>
+    		<td><a href="{{ path('gp_platform_view', { 'id': customer.id }) }}">{{ customer.id }}</a></td>
+    		<td>{{ customer.firstname }}  </td>
+    		<td>{{ customer.lastname }}</td>
+    		<td>{{ customer.address }}</td>
+    		<td>{{ customer.cp }}</td>
+    		<td>{{ customer.city }}</td>
+  		</tr>
+  		{% endfor %}
+	</table>
+	{% else %}
+    	<p>Pas d'utilisateur trouvé.</p>
+     {% endif %}
+    
   
 
  

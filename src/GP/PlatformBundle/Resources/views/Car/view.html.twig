@@ -1,0 +1,29 @@
+{# src/GP/PlatformBundle/Resources/views/Car/view.html.twig #}
+
+<div>
+  
+  <h3>Toutes les voitures : </h3>
+ 
+  	{% if cars != null %}
+  	<table class="table">
+  		<tr>
+	  		<th></th>
+	  		<th>Marque</th>
+	  		<th>Modèle</th>
+	  		<th>Modèle</th>
+	  	</tr>
+	  	{% for car in cars %}
+	  	<tr>
+	    	<td><a class="btn btn-primary" href="{{ path('gp_platform_editCar', { 'id': car.id }) }}">Modifier</a></td>
+	    	<td>{{ car.mark }}  </td>
+	    	<td>{{ car.model }}</td>
+	    	<td>{{ car.year }}</td>
+	    	<td><a class="btn btn-danger" href="{{ path('gp_platform_deleteCar', { 'id': car.id }) }}">Supprimer</a></td>
+	  	</tr>
+	  	{% endfor %}
+	</table>
+	{% else %}
+    	<p>Pas de voiture trouvée pour ce client.</p>
+    {% endif %}
+  
+</div>

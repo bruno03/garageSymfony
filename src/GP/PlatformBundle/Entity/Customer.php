@@ -30,7 +30,7 @@ class Customer
 	
 	/**
      * @ORM\OneToOne(targetEntity="GP\PlatformBundle\Entity\Image")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      */
 	private $image; 
 

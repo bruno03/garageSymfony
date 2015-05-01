@@ -1,7 +1,7 @@
 {# app/Resources/views/layout.html.twig #}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,11 +17,11 @@
 </head>
 
 <body>
-  <div class="container">
+	<div class="container">
    		<header class="jumbotron">
-    		<h1>Ma plateforme CLIENT</h1>
+    		<h1>Client Plateform</h1>
     		<p>Ce projet est propulsé par Symfony2,et construit grâce au MOOC OpenClassrooms et SensioLabs.</p>
-      		<p><a class="btn btn-primary btn-lg" href="">Participer au MOOC »</a></p>
+      		<p><a class="btn btn-primary btn-lg" href="http://www.garagedesplanches.ch">Visiter le site de l'entreprise »</a></p>
     	</header>
 
     	<div class="row">
@@ -30,7 +30,7 @@
         			<ul class="nav nav-pills nav-stacked">
           				<li><a href="{{ path('gp_platform_home') }}">Accueil</a></li>
           				<li><a href="{{ path('gp_platform_add') }}">Ajouter un client</a></li>
-          				<li><a href="{{ path('gp_platform_search') }}">Tous mes clients</a></li>
+          				<li><a href="{{ path('gp_platform_search') }}">Mes clients</a></li>
         			</ul>
        		</nav>
      
@@ -38,17 +38,18 @@
 		    	{% block body %}
 		  		{% endblock %}
 		  	</section>
-  		
-	
-    	<hr>
+  	
+    		<hr>
+   		</div>
+	</div>
+  
 
-   
-   		<footer>
-      		<p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
-   		</footer>
-   
-   </div>
-  </div>
+  
+  	<footer class="footer">
+      	<div class="container">
+        	<p class="text-muted">The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+      	</div>
+	</footer>
   
   {% block javascripts %}
     {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}

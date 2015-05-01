@@ -4,10 +4,12 @@ namespace GP\PlatformBundle\Controller;
 
 use GP\PlatformBundle\Entity\Customer;
 use GP\PlatformBundle\Entity\Image;
+use GP\PlatformBundle\Entity\Car;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use GP\PlatformBundle\Form\CustomerType;
 use GP\PlatformBundle\Form\ImageType;
+use GP\PlatformBundle\Form\CarType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 
@@ -22,14 +24,19 @@ class CustomerController extends Controller
     //Method to see 1 detail customer
     public function viewAction($id)
     {
-        
-        $customer = $this->getDoctrine()
+        $em = $this->getDoctrine()->getManager();
+		
+		$customer = $this->getDoctrine()
         ->getManager()
         ->find('GPPlatformBundle:Customer', $id);
-        
+		
+		$cars = $em
+	      ->getRepository('GPPlatformBundle:Car')
+	      ->findBy(array('customer' => $customer));
    
     	return $this->render('GPPlatformBundle:Customer:view.html.twig', array(
-      	'customer' => $customer
+      	'customer' => $customer,
+      	'cars' => $cars
     	));
     }
     
@@ -167,9 +174,8 @@ class CustomerController extends Controller
 			$em->persist($customer);
 	        $em->flush();
 	
-	        return $this->render('GPPlatformBundle:Customer:view.html.twig', array(
-      		'customer' => $customer
-    		));
+	       	return $this->redirect($this->generateUrl('gp_platform_view', array('id' => $customer->getId())));
+		   
 	    }
     
     // return $this->render('GPPlatformBundle:Customer:upload.html.twig', array(
@@ -178,4 +184,5 @@ class CustomerController extends Controller
     return array('form' => $form->createView(), 'customer' => $customer);
     
     }
+
 }

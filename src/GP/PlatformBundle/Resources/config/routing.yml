@@ -33,3 +33,15 @@ gp_platform_search:
 gp_platform_uploadImage:
     path:      /uploadImage/{id}
     defaults:  { _controller: GPPlatformBundle:Customer:uploadImage }
+
+gp_platform_addCar:
+    path:      /addCar/{id}
+    defaults:  { _controller: GPPlatformBundle:Car:add }
+
+gp_platform_editCar:
+    path:      /editCar/{id}
+    defaults:  { _controller: GPPlatformBundle:Car:edit }
+
+gp_platform_deleteCar:
+    path:      /deleteCar/{id}
+    defaults:  { _controller: GPPlatformBundle:Car:delete }
