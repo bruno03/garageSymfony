@@ -1,0 +1,30 @@
+{# src/GP/PlatformBundle/Resources/views/Bill/detail.html.twig #}
+
+{% extends "GPPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Client - {{ parent() }}
+{% endblock %}
+
+{% block gpplatform_body %}
+
+	<h2>Détail de la Facture : </h2>
+	<div class="row">
+  		<div class="col-md-6">
+			<p>ID Facture : {{ bill.id }}</p>
+			<p>Client : {{ bill.customer.lastname }} {{ bill.customer.firstname }}</p>
+			<p>Voiture : {{ bill.car.mark }} {{ bill.car.model }}</p>
+			<p>Date : {{ bill.date|date("d/m/Y") }}</p>
+			<p>Km : {{ bill.kms }}</p>
+			<p>Prix : {{ bill.price }}</p>
+		</div>
+		
+  
+  </div>
+  
+  <a class="btn btn-primary" href="{{ path('gp_platform_editBill', { 'id': bill.id }) }}">Modifier les données</a>
+        
+  <a class="btn btn-danger" href="{{ path('gp_platform_deleteBill', { 'id': bill.id }) }}">Supprimer la facture</a>
+  
+
+{% endblock %}

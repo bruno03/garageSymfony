@@ -45,3 +45,29 @@ gp_platform_editCar:
 gp_platform_deleteCar:
     path:      /deleteCar/{id}
     defaults:  { _controller: GPPlatformBundle:Car:delete }
+
+gp_platform_addBill:
+    path:      /addBill
+    defaults:  { _controller: GPPlatformBundle:Bill:add }
+
+gp_platform_viewBills:
+    path:      /viewBills
+    defaults:  { _controller: GPPlatformBundle:Bill:viewBills }
+
+gp_platform_viewBill:
+    path:      /bill/{id}
+    defaults:  { _controller: GPPlatformBundle:Bill:viewBill }
+    requirements:
+        id: \d+
+
+gp_platform_editBill:
+    path:      /editBill/{id}
+    defaults:  { _controller: GPPlatformBundle:Bill:edit }
+    requirements:
+        id: \d+
+
+gp_platform_deleteBill:
+    path:      /deleteBill/{id}
+    defaults:  { _controller: GPPlatformBundle:Bill:delete }
+    requirements:
+        id: \d+

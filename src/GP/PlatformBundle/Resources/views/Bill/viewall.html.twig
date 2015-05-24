@@ -1,0 +1,43 @@
+{# src/GP/PlatformBundle/Resources/views/Bill/viewall.html.twig #}
+
+{% extends "GPPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Search - {{ parent() }}
+{% endblock %}
+
+{% block gpplatform_body %}
+
+  <h2>Liste des factures : </h2>
+  
+	{% if bills != null %}
+	<table class="table table-striped">
+  		<tr>
+  			<th>#</th>
+  			<th>Client</th>
+  			<th>Voiture</th>
+  			<th>Date</th>
+  			<th>KM</th>
+  			<th>Prix (CHF)</th>
+  		</tr>
+  		
+  		{% for bill in bills %}
+  		<tr>
+    		<td><a href="{{ path('gp_platform_viewBill', { 'id': bill.id }) }}">{{ bill.id }}</a></td>
+    		<td>{{ bill.customer.lastname }} {{ bill.customer.firstname }}  </td>
+    		<td>{{ bill.car.mark }} {{ bill.car.model }}</td>
+    		<td>{{ bill.date|date("d/m/Y") }}</td>
+    		<td>{{ bill.kms }}</td>
+    		<td>{{ bill.price }}</td>
+  		</tr>
+  		{% endfor %}
+	</table>
+	{% else %}
+    	<p>Pas de factures trouvé.</p>
+     {% endif %}
+    
+  
+
+ 
+
+{% endblock %}

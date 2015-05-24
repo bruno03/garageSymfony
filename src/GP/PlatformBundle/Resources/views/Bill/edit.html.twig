@@ -1,0 +1,16 @@
+{# src/GP/PlatformBundle/Resources/views/Bill/edit.html.twig #}
+
+{% extends "GPPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block gpplatform_body %}
+
+  <h2>Modifier une facture : </h2>
+
+  {{ include("GPPlatformBundle:Bill:form.html.twig") }}
+
+ 
+{% endblock %}
