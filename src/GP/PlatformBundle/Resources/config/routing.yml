@@ -26,6 +26,10 @@ gp_platform_delete:
     requirements:
         id: \d+
 
+gp_platform_viewAll:
+    path:      /viewAll
+    defaults:  { _controller: GPPlatformBundle:Customer:viewAll }
+
 gp_platform_search:
     path:      /search
     defaults:  { _controller: GPPlatformBundle:Customer:search }
