@@ -18,6 +18,7 @@ class CarType extends AbstractType
             ->add('mark')
             ->add('model')
             ->add('year')
+			->add('plate')
            // ->add('customer')
             ->add('Enregistrer', 'submit')
         ;

@@ -8,7 +8,18 @@
 
 {% block gpplatform_body %}
 
-  <h2>Liste des clients : </h2>
+	<h2>Liste des clients : </h2>
+ 
+	<form action="{{ path('gp_platform_search') }}" method="post">
+  		<input id="search" type="text" name="search">
+  		<input type="submit" value="Chercher" class="btn btn-danger" />
+	</form>
+	
+	<br/>
+	
+	<div id="customers">
+	
+	</div>
   
 	{% if customers != null %}
 	<table class="table table-striped">
@@ -24,8 +35,8 @@
   		{% for customer in customers %}
   		<tr>
     		<td><a href="{{ path('gp_platform_view', { 'id': customer.id }) }}">{{ customer.id }}</a></td>
-    		<td>{{ customer.firstname }}  </td>
     		<td>{{ customer.lastname }}</td>
+    		<td>{{ customer.firstname }}  </td>
     		<td>{{ customer.address }}</td>
     		<td>{{ customer.cp }}</td>
     		<td>{{ customer.city }}</td>

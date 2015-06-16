@@ -125,21 +125,39 @@ class CustomerController extends Controller
         return $this->render('GPPlatformBundle:Customer:delete.html.twig');
     }
     
-    public function searchAction()
+	// Method to view all Customers 
+    public function viewAllAction()
     {
         $repository = $this
         ->getDoctrine()
         ->getManager()
-        ->getRepository('GPPlatformBundle:Customer')
-        ;
+        ->getRepository('GPPlatformBundle:Customer');
         
-        $customers = $repository->findAll();
+        $customers = $repository->getCustomersByLastnameASC();
         
+    	return $this->render('GPPlatformBundle:Customer:search.html.twig', array(
+    	'customers' => $customers
+    	));
+    }
+	
+	// Method to view all Customers 
+    public function searchAction(Request $request)
+    {
+        $repository = $this
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('GPPlatformBundle:Customer');
+		
+		//we get back the key search
+		$request = $this->getRequest();
+		$name= $request->request->get('search'); 
+
+		//We launch the method who will return the customers by the key 
+        $customers = $repository->searchByName($name);
         
     	return $this->render('GPPlatformBundle:Customer:search.html.twig', array(
       			'customers' => $customers
-    	));
-    
+       	));
     }
 	
 	/**

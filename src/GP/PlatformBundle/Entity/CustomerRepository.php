@@ -12,4 +12,23 @@ use Doctrine\ORM\EntityRepository;
  */
 class CustomerRepository extends EntityRepository
 {
+	//Method who return customers by Name
+	public function searchByName($key)
+	{
+		$qb = $this->createQueryBuilder('a');
+
+  		$qb
+    		->where('a.lastname LIKE :key')
+			->setParameter('key', $key.'%');
+			
+  		return $qb
+    		->getQuery()
+    		->getResult();
+	}
+	
+	//Method to get customers by ASC by LASTNAME
+	public function getCustomersByLastnameASC()
+	{
+		return $this->findBy(array(), array('lastname' => 'ASC'));
+	}
 }

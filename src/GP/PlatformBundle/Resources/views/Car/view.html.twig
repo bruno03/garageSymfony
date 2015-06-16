@@ -10,7 +10,8 @@
 	  		<th></th>
 	  		<th>Marque</th>
 	  		<th>Modèle</th>
-	  		<th>Modèle</th>
+	  		<th>Année</th>
+	  		<th>Immatriculation</th>
 	  	</tr>
 	  	{% for car in cars %}
 	  	<tr>
@@ -18,6 +19,7 @@
 	    	<td>{{ car.mark }}  </td>
 	    	<td>{{ car.model }}</td>
 	    	<td>{{ car.year }}</td>
+	    	<td>{{ car.plate }}</td>
 	    	<td><a class="btn btn-danger" href="{{ path('gp_platform_deleteCar', { 'id': car.id }) }}">Supprimer</a></td>
 	  	</tr>
 	  	{% endfor %}

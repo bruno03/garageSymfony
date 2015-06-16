@@ -41,6 +41,13 @@ class Car
      * @ORM\Column(name="model", type="string", length=255)
      */
     private $model;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="plate", type="string", length=255)
+     */
+    private $plate;
 
     /**
      * @var string
@@ -150,5 +157,28 @@ class Car
     public function getCustomer()
     {
         return $this->customer;
+    }
+
+    /**
+     * Set plate
+     *
+     * @param string $plate
+     * @return Car
+     */
+    public function setPlate($plate)
+    {
+        $this->plate = $plate;
+    
+        return $this;
+    }
+
+    /**
+     * Get plate
+     *
+     * @return string 
+     */
+    public function getPlate()
+    {
+        return $this->plate;
     }
 }
